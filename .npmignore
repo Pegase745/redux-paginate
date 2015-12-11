@@ -1,0 +1,8 @@
+src
+examples
+test
+.babelrc
+.eslint*
+.npmignore
+.travis.yml
+webpack.*
