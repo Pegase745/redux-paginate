@@ -16,12 +16,15 @@ export default function paginate({ types, mapActionToKey }) {
 
   const [requestType, successType, failureType, createType] = types;
 
-  function updatePagination(state = {
-    isFetching: false,
-    nextPageUrl: undefined,
-    pageCount: 0,
-    ids: [],
-  }, action) {
+  function updatePagination(state = {}, action) {
+    if (typeof state.pageCount !== 'number') {
+      state = {
+        isFetching: false,
+        nextPageUrl: undefined,
+        pageCount: 0,
+        ids: [],
+      }
+    }
     const result = action.payload && action.payload.result;
     switch (action.type) {
     case requestType:
